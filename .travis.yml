@@ -19,11 +19,15 @@ env:
     - TF_RUST_BUILD_FROM_SRC=true
     - TF_RUST_BUILD_FROM_SRC=false
 
+os:
+  - linux
+  - osx
 
 matrix:
   fast_finish: true
   allow_failures:
     - rust: nightly
+    - os: osx
 
 
 install:
