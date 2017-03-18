@@ -188,7 +188,7 @@ fn build_from_src() {
             command.current_dir(&source)
                 .arg("build")
                 .arg(format!("--jobs={}", get!("NUM_JOBS")))
-                .arg("--local_resources=2048,0.75,1.0")
+                .arg("--local_resources=512,0.5,1.0")
                 .arg("--compilation_mode=opt")
                 .arg("--copt=-march=native")
                 .arg(TARGET)
