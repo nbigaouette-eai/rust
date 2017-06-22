@@ -317,6 +317,9 @@ extern "C" {
      -> *mut TF_Tensor;
 }
 extern "C" {
+    pub fn TF_TensorMaybeMove(tensor: *mut TF_Tensor) -> *mut TF_Tensor;
+}
+extern "C" {
     pub fn TF_DeleteTensor(arg1: *mut TF_Tensor);
 }
 extern "C" {
@@ -901,12 +904,12 @@ extern "C" {
                                                    dst: TF_Output);
 }
 extern "C" {
-    pub fn TF_GraphImportGraphDefOptionsRemapControlDependency(opts:
-                                                                   *mut TF_ImportGraphDefOptions,
-                                                               src_name:
-                                                                   *const ::std::os::raw::c_char,
-                                                               dst:
-                                                                   *mut TF_Operation);
+    pub fn TF_ImportGraphDefOptionsRemapControlDependency(opts:
+                                                              *mut TF_ImportGraphDefOptions,
+                                                          src_name:
+                                                              *const ::std::os::raw::c_char,
+                                                          dst:
+                                                              *mut TF_Operation);
 }
 extern "C" {
     pub fn TF_ImportGraphDefOptionsAddControlDependency(opts:
@@ -1023,6 +1026,12 @@ extern "C" {
 }
 extern "C" {
     pub fn TF_AbortWhile(params: *const TF_WhileParams);
+}
+extern "C" {
+    pub fn TF_AddGradients(g: *mut TF_Graph, y: *mut TF_Output,
+                           ny: ::std::os::raw::c_int, x: *mut TF_Output,
+                           nx: ::std::os::raw::c_int, dx: *mut TF_Output,
+                           status: *mut TF_Status, dy: *mut TF_Output);
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
